@@ -1,4 +1,9 @@
-export default function Todo({ list, handleDelete, headleCheck }) {
+export default function Todo({
+  list,
+  handleDelete,
+  headleCheck,
+  headleUpdate,
+}) {
   return (
     <div className="w-full min-h-[4rem] rounded-3xl dark:bg-dark-bg-btn mb-5 bg-light-bg-2 dark:text-dark-text flex items-center px-5 justify-between">
       <div className="flex items-center w-full">
@@ -12,7 +17,10 @@ export default function Todo({ list, handleDelete, headleCheck }) {
         >
           삭제
         </button>
-        <button className="min-w-[4rem] w-[30%] ml-[4%] h-[2.5rem] text-dark-text-input rounded-xl bg-light-bg-blue">
+        <button
+          onClick={() => headleUpdate(list)}
+          className="min-w-[4rem] w-[30%] ml-[4%] h-[2.5rem] text-dark-text-input rounded-xl bg-light-bg-blue"
+        >
           수정
         </button>
         <button

@@ -25,18 +25,30 @@ function App() {
       isDone: true,
     },
   ]);
-  console.log(todo);
 
   const todoWork = todo.filter((e) => e.isDone === false);
   const todoDone = todo.filter((e) => e.isDone === true);
-  console.log(todoWork, todoDone);
-  // const headleUpdate = (updated) => setTodo(list.map((l) => (l.id == updated.id ? updated : l)));
+
+  const headleUpdate = (updated) => {
+    const title = prompt("제목 변경 (5자 이하)", updated.title);
+    if (title === "" || title.length > 6)
+      return alert("5자 초과이거나 빈칸입니다.");
+    const text = prompt("내용 변경 (15자 이하)", updated.text);
+    if (text === "" || title.length > 16)
+      return alert("15자 초과이거나 빈칸입니다.");
+    setTodo(
+      todo.map((l) =>
+        l.id == updated.id ? { ...l, title: title, text: text } : l
+      )
+    );
+  };
+
   const headleCheck = (updated) => {
     setTodo(
       todo.map((l) => (l.id === updated.id ? { ...l, isDone: !l.isDone } : l))
     );
-    console.log("wda");
   };
+
   const handleDelete = (deleted) =>
     setTodo(todo.filter((l) => l.id !== deleted.id));
 
@@ -55,6 +67,7 @@ function App() {
             todoWork={todoWork}
             handleDelete={handleDelete}
             headleCheck={headleCheck}
+            headleUpdate={headleUpdate}
           />
           <h3 className="text-light-text-dark dark:text-white text-[1.8rem] font-bold ml-2 mb-2 mt-5">
             Done
@@ -63,6 +76,7 @@ function App() {
             todoDone={todoDone}
             handleDelete={handleDelete}
             headleCheck={headleCheck}
+            headleUpdate={headleUpdate}
           />
         </div>
       </div>

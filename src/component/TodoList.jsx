@@ -1,6 +1,11 @@
 import Todo from "./Todo";
 
-export default function TodoList({ todoWork, handleDelete, headleCheck }) {
+export default function TodoList({
+  todoWork,
+  handleDelete,
+  headleCheck,
+  headleUpdate,
+}) {
   return (
     <div className="w-full min-h-[10rem] p-8 pb-3 bg-light-bg-1 dark:bg-dark-bg-1 rounded-3xl">
       {todoWork.length === 0 ? (
@@ -14,6 +19,7 @@ export default function TodoList({ todoWork, handleDelete, headleCheck }) {
             list={e}
             handleDelete={handleDelete}
             headleCheck={headleCheck}
+            headleUpdate={headleUpdate}
           />
         ))
       )}
