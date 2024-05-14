@@ -9,7 +9,7 @@ export default function InputForm({ setTodo }) {
     if (todoTitle !== "" && todoText !== "") {
       setTodo((todo) => [
         ...todo,
-        { id: uuidv4(), title: todoTitle, text: todoText, isDone: "false" },
+        { id: uuidv4(), title: todoTitle, text: todoText, isDone: false },
       ]);
     }
     e.target.elements.title.value = "";
