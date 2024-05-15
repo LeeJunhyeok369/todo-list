@@ -26,4 +26,3 @@ export default function CompletionList({
     </div>
   );
 }
-// <Todo key={e.id} list={e} onUpdate={headleUpdate} onDelete={handleDelete} check={check}/>

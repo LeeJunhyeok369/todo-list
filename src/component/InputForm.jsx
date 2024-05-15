@@ -1,7 +1,7 @@
 // import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
-export default function InputForm({ setTodo }) {
+export default function InputForm({ setTodo, setLocalStorege }) {
   const addTodo = (e) => {
     e.preventDefault();
     const todoTitle = e.target.elements.title.value.trim();
@@ -11,6 +11,7 @@ export default function InputForm({ setTodo }) {
         ...todo,
         { id: uuidv4(), title: todoTitle, text: todoText, isDone: false },
       ]);
+      setLocalStorege();
     }
     e.target.elements.title.value = "";
     e.target.elements.text.value = "";
