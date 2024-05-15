@@ -31,10 +31,20 @@ function App() {
 
   const headleUpdate = (updated) => {
     const title = prompt("제목 변경 (5자 이하)", updated.title);
-    if (title === "" || title.length > 6)
+    if (
+      title === "" ||
+      title === undefined ||
+      title === null ||
+      title.length > 6
+    )
       return alert("5자 초과이거나 빈칸입니다.");
     const text = prompt("내용 변경 (15자 이하)", updated.text);
-    if (text === "" || title.length > 16)
+    if (
+      text === "" ||
+      title === undefined ||
+      title === null ||
+      title.length > 16
+    )
       return alert("15자 초과이거나 빈칸입니다.");
     setTodo(
       todo.map((l) =>
