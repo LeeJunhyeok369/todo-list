@@ -56,26 +56,40 @@ function App() {
     setLocalStorege();
   };
 
-  const getLocalStorege = () => {
-    let todoList = localStorage.getItem("todoList");
+  const getLocalStorege = (name = "todoList") => {
+    let todoList = localStorage.getItem(name);
     return todoList !== null ? JSON.parse(todoList) : setLocalStorege();
   };
-  const setLocalStorege = () => {
-    return JSON.parse(localStorage.setItem("todoList", JSON.stringify(todo)));
+  const setLocalStorege = (name = "todoList", data = todo) => {
+    return localStorage.setItem(name, JSON.stringify(data));
+  };
+
+  const modeChange = () => {
+    const mode = getLocalStorege("mode");
+    if (mode || mode === undefined) {
+      document.getElementById("mode").classList.remove("dark");
+    } else {
+      document.getElementById("mode").classList.add("dark");
+    }
   };
 
   useEffect(() => {
     setTodo(getLocalStorege());
+    modeChange();
   }, []);
 
   return (
-    <div className="">
+    <div id="mode" className="dark">
       <div className="max-w-screen min-h-screen bg-light-bg dark:bg-dark-bg py-10">
         <div className="max-w-[1200px] min-w-[50rem] m-auto px-10">
           <h3 className="text-light-text-dark dark:text-white text-[5rem] text-center mb-5">
             TodoList
           </h3>
-          <InputForm setTodo={setTodo} setLocalStorege={setLocalStorege} />
+          <InputForm
+            setTodo={setTodo}
+            setLocalStorege={setLocalStorege}
+            modeChange={modeChange}
+          />
           <h3 className="text-light-text-dark dark:text-white text-[1.8rem] font-bold ml-2 mb-2 mt-5">
             Working
           </h3>
