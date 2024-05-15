@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MdNightlight, MdOutlineLightMode } from "react-icons/md";
 
 export default function ModeBtn({ setLocalStorege, modeChange }) {
